@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ms Lê Hằng English</title>
+    <!-- Google Fonts: Nunito & Quicksand -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #FF758C;
+            --primary-pink-dark: #E0526B;
+            --secondary-purple: #8854C0;
+            --secondary-purple-dark: #6C3FB8;
+            --accent-yellow: #FDCB6E;
+            --accent-green: #00C9A7;
+            --success-bg: #E6F9F0;
+            --success-border: #00D26A;
+            --success-text: #006633;
+            --error-bg: #FFEAEA;
+            --error-border: #FF4757;
+            --error-text: #900C3F;
+            --pastel-pink-bg: #FFF0F3;
+            --highlight-pink: #FFC0CB;
+            --card-shadow: 0 6px 0 rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(-45deg, #FF758C, #FF7EB3, #8854C0, #7F7FD5);
+            background-size: 300% 300%;
+            animation: gradientBG 14s ease infinite;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.25) 0%, transparent 20%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Ctext x='15' y='35' font-size='24'%3E🏫%3C/text%3E%3Ctext x='80' y='45' font-size='24'%3E✏️%3C/text%3E%3Ctext x='35' y='100' font-size='24'%3E⭐%3C/text%3E%3Ctext x='95' y='110' font-size='24'%3E📚%3C/text%3E%3C/svg%3E");
+            color: #2D3436;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* TOP CONTROL BAR */
+        .top-bar {
+            height: 65px;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 3px solid rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-avatar {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #8854C0, #FF758C);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 900;
+            box-shadow: 0 3px 0 var(--secondary-purple-dark);
+        }
+
+        .brand-title h1 {
+            font-size: 18px;
+            font-weight: 900;
+            color: #8854C0;
+            letter-spacing: 0.5px;
+            margin: 0;
+        }
+
+        /* TIMER & PROGRESS */
+        .timer-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #FFF;
+            padding: 6px 16px;
+            border-radius: 30px;
+            border: 2px solid #E2E8F0;
+            box-shadow: 0 3px 0 #CBD5E1;
+        }
+
+        .timer-display {
+            font-size: 17px;
+            font-weight: 900;
+            color: #FF758C;
+            min-width: 60px;
+            font-family: monospace;
+        }
+
+        .btn-timer {
+            background: #FDCB6E;
+            border: none;
+            color: #2D3436;
+            font-weight: 800;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 3px 0 #E17055;
+            transition: all 0.1s;
+            font-size: 12px;
+        }
+
+        .btn-timer:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #E17055;
+        }
+
+        .progress-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #FFF;
+            padding: 6px 16px;
+            border-radius: 30px;
+            border: 2px solid #E2E8F0;
+            box-shadow: 0 3px 0 #CBD5E1;
+        }
+
+        .progress-bar-outer {
+            width: 140px;
+            height: 14px;
+            background: #E2E8F0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-inner {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #00C9A7, #00D26A);
+            border-radius: 10px;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .progress-text {
+            font-size: 13px;
+            font-weight: 800;
+            color: #2D3436;
+        }
+
+        .btn-submit-main {
+            background: #00C9A7;
+            color: white;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 25px;
+            font-weight: 900;
+            font-size: 13px;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #00967D;
+            transition: all 0.15s;
+        }
+
+        .btn-submit-main:hover {
+            background: #00B395;
+        }
+
+        .btn-submit-main:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #00967D;
+        }
+
+        /* TAB NAVIGATION */
+        .tab-bar {
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 8px 0;
+            border-bottom: 2px solid #E2E8F0;
+        }
+
+        .tab-btn {
+            background: #FFF;
+            border: 2px solid #E2E8F0;
+            padding: 8px 22px;
+            border-radius: 16px;
+            font-weight: 800;
+            font-size: 14px;
+            color: #636E72;
+            cursor: pointer;
+            box-shadow: 0 3px 0 #CBD5E1;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn.active {
+            background: #FF758C;
+            color: white;
+            border-color: #FF758C;
+            box-shadow: 0 3px 0 #E0526B;
+        }
+
+        .tab-btn:hover:not(.active) {
+            transform: translateY(-2px);
+            background: #FFF0F3;
+        }
+
+        /* MAIN SPLIT CONTAINER */
+        .main-container {
+            display: flex;
+            height: calc(100vh - 120px);
+            padding: 12px;
+            gap: 16px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* LEFT & RIGHT PANES */
+        .pane {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 24px;
+            border: 3px solid #FFF;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            overflow-y: auto;
+            padding: 26px;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbars */
+        .pane::-webkit-scrollbar {
+            width: 8px;
+        }
+        .pane::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.03);
+            border-radius: 10px;
+        }
+        .pane::-webkit-scrollbar-thumb {
+            background: #FF758C;
+            border-radius: 10px;
+        }
+
+        /* PASSAGE TYPOGRAPHY */
+        .passage-title {
+            font-size: 22px;
+            font-weight: 900;
+            color: #8854C0;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px dashed #FFD1DC;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .paragraph-card {
+            background: #FFF;
+            border: 2px solid #F0F0F0;
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 18px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .paragraph-card:hover {
+            border-color: #FFD1DC;
+        }
+
+        .paragraph-tag {
+            display: inline-block;
+            background: #8854C0;
+            color: white;
+            font-weight: 800;
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .paragraph-text {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #2D3436;
+        }
+
+        /* HIGHLIGHTING */
+        mark.pastel-highlight {
+            background-color: var(--highlight-pink);
+            color: #000;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .evidence-pulse {
+            animation: pulseEvidence 2s infinite alternate;
+            border: 3px solid #FF758C !important;
+            background: #FFF0F3 !important;
+        }
+
+        @keyframes pulseEvidence {
+            0% { box-shadow: 0 0 0 0 rgba(255, 117, 140, 0.7); }
+            100% { box-shadow: 0 0 0 15px rgba(255, 117, 140, 0); }
+        }
+
+        /* TRANSLATION BUTTON & BOX */
+        .btn-translate {
+            background: #FFF3BF;
+            border: 2px solid #FAB005;
+            color: #D9480F;
+            font-weight: 800;
+            font-size: 13px;
+            padding: 6px 14px;
+            border-radius: 14px;
+            cursor: pointer;
+            margin-top: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 3px 0 #F59F00;
+            transition: all 0.15s;
+        }
+
+        .btn-translate:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #F59F00;
+        }
+
+        .translation-box {
+            display: none;
+            background: #FFF9DB;
+            border-left: 4px solid #FAB005;
+            padding: 14px;
+            margin-top: 12px;
+            border-radius: 10px;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #495057;
+            font-style: italic;
+        }
+
+        /* GLOSSARY TABLE */
+        .glossary-section {
+            margin-top: 30px;
+            background: #FFF;
+            border-radius: 20px;
+            border: 2px solid #E2E8F0;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .glossary-title {
+            font-size: 18px;
+            font-weight: 900;
+            color: #8854C0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .glossary-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .glossary-table th {
+            background: #FFF0F3;
+            color: #FF758C;
+            font-weight: 800;
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid #FFD1DC;
+        }
+
+        .glossary-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #F1F3F5;
+            color: #2D3436;
+        }
+
+        .glossary-table tr:hover td {
+            background: #FAF5FF;
+        }
+
+        /* EXERCISE QUESTION CARDS */
+        .question-card {
+            background: #FFF;
+            border: 2.5px solid #E2E8F0;
+            border-radius: 20px;
+            padding: 22px;
+            margin-bottom: 22px;
+            box-shadow: 0 6px 0 #E2E8F0;
+            transition: all 0.2s;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .question-number {
+            background: #FF758C;
+            color: white;
+            font-weight: 900;
+            font-size: 13px;
+            padding: 4px 14px;
+            border-radius: 12px;
+            box-shadow: 0 2px 0 #E0526B;
+        }
+
+        .question-type-badge {
+            font-size: 12px;
+            font-weight: 800;
+            color: #8854C0;
+            background: #FAF5FF;
+            padding: 4px 10px;
+            border-radius: 10px;
+            border: 1px solid #E9D5FF;
+        }
+
+        .question-text {
+            font-size: 16px;
+            font-weight: 700;
+            color: #2D3436;
+            line-height: 1.55;
+            margin-bottom: 16px;
+        }
+
+        /* MULTIPLE CHOICE OPTIONS */
+        .mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mcq-option {
+            background: #FAFAFA;
+            border: 2px solid #E2E8F0;
+            border-radius: 14px;
+            padding: 12px 16px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #2D3436;
+            cursor: pointer;
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 3px 0 #E2E8F0;
+        }
+
+        .mcq-option:hover {
+            background: #FFF0F3;
+            border-color: #FF758C;
+            transform: translateY(-2px);
+        }
+
+        .mcq-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.95;
+        }
+
+        .mcq-option.correct {
+            background: var(--success-bg) !important;
+            border-color: var(--success-border) !important;
+            color: var(--success-text) !important;
+            box-shadow: 0 3px 0 var(--success-border) !important;
+        }
+
+        .mcq-option.wrong {
+            background: var(--error-bg) !important;
+            border-color: var(--error-border) !important;
+            color: var(--error-text) !important;
+            box-shadow: 0 3px 0 var(--error-border) !important;
+        }
+
+        .option-prefix {
+            width: 28px;
+            height: 28px;
+            background: white;
+            border: 2px solid #CBD5E1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+
+        /* EXPLANATION BOX */
+        .explanation-card {
+            display: none;
+            background: #FAF5FF;
+            border: 2px solid #E9D5FF;
+            border-radius: 16px;
+            padding: 16px;
+            margin-top: 16px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .explanation-title {
+            font-weight: 900;
+            color: #8854C0;
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .exp-item {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            color: #2D3436;
+        }
+
+        .exp-label {
+            font-weight: 800;
+            color: #FF758C;
+        }
+
+        .btn-locate {
+            background: #FF758C;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 3px 0 #E0526B;
+            transition: all 0.15s;
+        }
+
+        .btn-locate:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #E0526B;
+        }
+
+        /* RESULT MODAL */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-card {
+            background: white;
+            border-radius: 30px;
+            padding: 35px;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            border: 4px solid #FF758C;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            animation: bounceIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        @keyframes bounceIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .score-circle {
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(135deg, #FF758C, #8854C0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 34px;
+            font-weight: 900;
+            box-shadow: 0 8px 0 #6C3FB8;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #2D3436;
+            margin-bottom: 10px;
+        }
+
+        .modal-desc {
+            font-size: 16px;
+            color: #636E72;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .btn-close-modal {
+            background: #00C9A7;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 20px;
+            font-weight: 900;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #00967D;
+        }
+
+        /* CONFETTI CANVAS */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CONFETTI CANVAS -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- TOP CONTROL BAR -->
+    <div class="top-bar">
+        <div class="brand-header">
+            <div class="brand-avatar">LH</div>
+            <div class="brand-title">
+                <h1>Ms Lê Hằng English</h1>
+            </div>
+        </div>
+
+        <div class="timer-container">
+            <i class="fa-solid fa-clock" style="color: #FF758C;"></i>
+            <span class="timer-display" id="timer-display">25:00</span>
+            <button class="btn-timer" id="btn-timer-toggle" onclick="toggleTimer()">BẮT ĐẦU TÍNH GIỜ LÀM BÀI</button>
+        </div>
+
+        <div class="progress-box">
+            <i class="fa-solid fa-bullseye" style="color: #00C9A7;"></i>
+            <div class="progress-bar-outer">
+                <div class="progress-bar-inner" id="progress-bar-inner"></div>
+            </div>
+            <span class="progress-text" id="progress-text">0/12 (0%)</span>
+        </div>
+
+        <button class="btn-submit-main" onclick="submitTest()">NỘP BÀI</button>
+    </div>
+
+    <!-- TAB BAR -->
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab(1)" id="tab-btn-1">
+            <i class="fa-solid fa-book-open"></i> Exercise 9: Linda's First Day
+        </button>
+        <button class="tab-btn" onclick="switchTab(2)" id="tab-btn-2">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Exercise 10: Sentence Transformation
+        </button>
+    </div>
+
+    <!-- MAIN CONTENT SPLIT SCREEN -->
+    <div class="main-container">
+
+        <!-- ==================== EXERCISE 9 PASSAGE CONTENT ==================== -->
+        <div class="pane passage-pane" id="passage-pane-1">
+            <div class="passage-title">
+                <i class="fa-solid fa-book-open"></i> Exercise 9: Linda's First Day
+            </div>
+
+            <div class="paragraph-card" id="ex9-para-1">
+                <span class="paragraph-tag">Paragraph 1</span>
+                <p class="paragraph-text">
+                    Hi, I'm Linda. I'm in the sixth grade. Today is my first day at secondary school. In the morning I put on my new uniform and get my new bag.
+                </p>
+                <button class="btn-translate" onclick="toggleTranslation('trans-ex9-1')">
+                    <i class="fa-solid fa-language"></i> Mở dịch đoạn này 🌟
+                </button>
+                <div class="translation-box" id="trans-ex9-1">
+                    Xin chào, tôi là Linda. Tôi đang học lớp sáu. Hôm nay là ngày đầu tiên của tôi ở trường trung học cơ sở. Vào buổi sáng, tôi mặc đồng phục mới và lấy chiếc cặp mới của mình.
+                </div>
+            </div>
+
+            <div class="paragraph-card" id="ex9-para-2">
+                <span class="paragraph-tag">Paragraph 2</span>
+                <p class="paragraph-text">
+                    My best friend and I walk to school together. We are both very nervous and excited. When we get school, we are shown into our classroom with our new teacher. It is quite scary because I don't know most of the children. Then we go to our first lesson. We have lots of different subjects and the lessons are really fun. My favourite subjects are Art and English.
+                </p>
+                <button class="btn-translate" onclick="toggleTranslation('trans-ex9-2')">
+                    <i class="fa-solid fa-language"></i> Mở dịch đoạn này 🌟
+                </button>
+                <div class="translation-box" id="trans-ex9-2">
+                    Bạn thân nhất của tôi và tôi cùng đi bộ đến trường. Cả hai chúng tôi đều rất hồi hộp và hào hứng. Khi đến trường, chúng tôi được đưa vào lớp học cùng với cô giáo mới. Điều đó khá đáng sợ vì tôi không biết hầu hết các bạn nhỏ ở đây. Sau đó chúng tôi vào tiết học đầu tiên. Chúng tôi có rất nhiều môn học khác nhau và các bài học thực sự rất vui. Các môn học yêu thích của tôi là Mỹ thuật và Tiếng Anh.
+                </div>
+            </div>
+
+            <div class="paragraph-card" id="ex9-para-3">
+                <span class="paragraph-tag">Paragraph 3</span>
+                <p class="paragraph-text">
+                    I really like my new school, all my teacher are lovely, the lessons are really interesting and I enjoy my first day. I can't wait to go back tomorrow!
+                </p>
+                <button class="btn-translate" onclick="toggleTranslation('trans-ex9-3')">
+                    <i class="fa-solid fa-language"></i> Mở dịch đoạn này 🌟
+                </button>
+                <div class="translation-box" id="trans-ex9-3">
+                    Tôi thực sự thích ngôi trường mới của mình, tất cả giáo viên của tôi đều rất đáng yêu, bài học thực sự thú vị và tôi tận hưởng ngày đầu tiên của mình. Tôi không thể chờ đợi để quay trở lại trường vào ngày mai!
+                </div>
+            </div>
+
+            <!-- GLOSSARY TABLE EXERCISE 9 -->
+            <div class="glossary-section">
+                <div class="glossary-title">
+                    <i class="fa-solid fa-spell-check"></i> Vocabulary Glossary (Exercise 9)
+                </div>
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Từ vựng</th>
+                            <th>Loại từ</th>
+                            <th>Nghĩa tiếng Việt</th>
+                            <th>Từ đồng nghĩa / Cấu trúc tương đương</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Sixth grade</strong></td><td>n phr</td><td>Lớp sáu</td><td>Grade 6</td></tr>
+                        <tr><td><strong>Secondary school</strong></td><td>n phr</td><td>Trường THCS</td><td>Middle school, junior high</td></tr>
+                        <tr><td><strong>Put on</strong></td><td>phr v</td><td>Mặc (quần áo) vào</td><td>Wear, don</td></tr>
+                        <tr><td><strong>Uniform</strong></td><td>n</td><td>Đồng phục</td><td>School attire</td></tr>
+                        <tr><td><strong>Walk to school</strong></td><td>v phr</td><td>Đi bộ đến trường</td><td>Go to school on foot</td></tr>
+                        <tr><td><strong>Nervous</strong></td><td>adj</td><td>Hồi hộp, lo lắng</td><td>Anxious, apprehensive</td></tr>
+                        <tr><td><strong>Excited</strong></td><td>adj</td><td>Hào hứng, phấn khích</td><td>Thrilled, eager</td></tr>
+                        <tr><td><strong>Scary</strong></td><td>adj</td><td>Đáng sợ, e ngại</td><td>Frightening, intimidating</td></tr>
+                        <tr><td><strong>Favourite subjects</strong></td><td>n phr</td><td>Môn học yêu thích</td><td>Preferred subjects</td></tr>
+                        <tr><td><strong>Can't wait to</strong></td><td>v phr</td><td>Không thể chờ đợi để...</td><td>Eagerly look forward to</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ==================== EXERCISE 9 QUESTIONS CONTENT ==================== -->
+        <div class="pane exercise-pane" id="exercise-pane-1">
+            <div class="passage-title" style="color: #FF758C;">
+                <i class="fa-solid fa-pen-to-square"></i> Ex9: Questions 1 - 4
+            </div>
+
+            <!-- Ex9 Q1 -->
+            <div class="question-card" id="qcard-1">
+                <div class="question-header">
+                    <span class="question-number">Question 1</span>
+                    <span class="question-type-badge">Reading Comprehension</span>
+                </div>
+                <div class="question-text">
+                    What grade is Linda in?
+                </div>
+                <div class="mcq-options">
+                    <div class="mcq-option" onclick="checkMCQ(1, 'A', 'ex9-para-1')">
+                        <span class="option-prefix">A</span> 4
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(1, 'B', 'ex9-para-1')">
+                        <span class="option-prefix">B</span> 5
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(1, 'C', 'ex9-para-1')">
+                        <span class="option-prefix">C</span> 6
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(1, 'D', 'ex9-para-1')">
+                        <span class="option-prefix">D</span> 7
+                    </div>
+                </div>
+                <div class="explanation-card" id="exp-1"></div>
+            </div>
+
+            <!-- Ex9 Q2 -->
+            <div class="question-card" id="qcard-2">
+                <div class="question-header">
+                    <span class="question-number">Question 2</span>
+                    <span class="question-type-badge">Reading Comprehension</span>
+                </div>
+                <div class="question-text">
+                    Who does she go to school with?
+                </div>
+                <div class="mcq-options">
+                    <div class="mcq-option" onclick="checkMCQ(2, 'A', 'ex9-para-2')">
+                        <span class="option-prefix">A</span> her dad
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(2, 'B', 'ex9-para-2')">
+                        <span class="option-prefix">B</span> her mom
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(2, 'C', 'ex9-para-2')">
+                        <span class="option-prefix">C</span> her brother
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(2, 'D', 'ex9-para-2')">
+                        <span class="option-prefix">D</span> her best friend
+                    </div>
+                </div>
+                <div class="explanation-card" id="exp-2"></div>
+            </div>
+
+            <!-- Ex9 Q3 -->
+            <div class="question-card" id="qcard-3">
+                <div class="question-header">
+                    <span class="question-number">Question 3</span>
+                    <span class="question-type-badge">Reading Comprehension</span>
+                </div>
+                <div class="question-text">
+                    Why does Linda feel scary?
+                </div>
+                <div class="mcq-options">
+                    <div class="mcq-option" onclick="checkMCQ(3, 'A', 'ex9-para-2')">
+                        <span class="option-prefix">A</span> Because she doesn't know most of the children
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(3, 'B', 'ex9-para-2')">
+                        <span class="option-prefix">B</span> Because she doesn't know most of the teacher
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(3, 'C', 'ex9-para-2')">
+                        <span class="option-prefix">C</span> Because she doesn't know most of the subjects
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(3, 'D', 'ex9-para-2')">
+                        <span class="option-prefix">D</span> Because she doesn't know most of the things.
+                    </div>
+                </div>
+                <div class="explanation-card" id="exp-3"></div>
+            </div>
+
+            <!-- Ex9 Q4 -->
+            <div class="question-card" id="qcard-4">
+                <div class="question-header">
+                    <span class="question-number">Question 4</span>
+                    <span class="question-type-badge">Reading Comprehension</span>
+                </div>
+                <div class="question-text">
+                    What are her favourite subjects?
+                </div>
+                <div class="mcq-options">
+                    <div class="mcq-option" onclick="checkMCQ(4, 'A', 'ex9-para-2')">
+                        <span class="option-prefix">A</span> Art and Music
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(4, 'B', 'ex9-para-2')">
+                        <span class="option-prefix">B</span> Art and Maths
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(4, 'C', 'ex9-para-2')">
+                        <span class="option-prefix">C</span> Art and History
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(4, 'D', 'ex9-para-2')">
+                        <span class="option-prefix">D</span> Art and English
+                    </div>
+                </div>
+                <div class="explanation-card" id="exp-4"></div>
+            </div>
+        </div>
+
+        <!-- ==================== EXERCISE 10 GRAMMAR REFERENCE ==================== -->
+        <div class="pane passage-pane" id="passage-pane-2" style="display: none;">
+            <div class="passage-title">
+                <i class="fa-solid fa-graduation-cap"></i> Exercise 10: Key Grammar Rules
+            </div>
+
+            <div class="paragraph-card" id="ex10-rule-1">
+                <span class="paragraph-tag">Rule 1: Possessive Nouns ('s)</span>
+                <p class="paragraph-text">
+                    <strong>Sở hữu cách (Possessive 's):</strong> Sử dụng <code>'s</code> sau danh từ số ít để chỉ sự sở hữu.<br>
+                    • Công thức: <code>S + have/has + N</code> ➔ <code>This/That is + S's + N</code><br>
+                    <em>Ví dụ: Nga has a book ➔ Nga's book (Cuốn sách của Nga) / My mother has a car ➔ My mother's car (Ô tô của mẹ tôi).</em>
+                </p>
+            </div>
+
+            <div class="paragraph-card" id="ex10-rule-2">
+                <span class="paragraph-tag">Rule 2: There is / There isn't</span>
+                <p class="paragraph-text">
+                    <strong>Cấu trúc tồn tại (There is/are):</strong><br>
+                    • Phủ định sở hữu: <code>I don't have + a/an + N</code> ➔ <code>There isn't + a/an + N + in/on...</code><br>
+                    • Đặt câu hỏi: <code>Are there + N(số nhiều)...?</code> ➔ <code>Does + S + have + N...?</code>
+                </p>
+            </div>
+
+            <div class="paragraph-card" id="ex10-rule-3">
+                <span class="paragraph-tag">Rule 3: Suggestions (Let's / How about)</span>
+                <p class="paragraph-text">
+                    <strong>Cấu trúc câu đề nghị / rủ rê:</strong><br>
+                    • <code>Let's + V_bare...</code><br>
+                    • = <code>How about + V-ing...?</code> / <code>What about + V-ing...?</code><br>
+                    • = <code>Why don't we + V_bare...?</code>
+                </p>
+            </div>
+
+            <div class="paragraph-card" id="ex10-rule-4">
+                <span class="paragraph-tag">Rule 4: Prepositions of Place</span>
+                <p class="paragraph-text">
+                    <strong>Giới từ chỉ vị trí trái nghĩa & ghép câu:</strong><br>
+                    • <code>In front of</code> (phía trước) ↔ <code>Behind</code> (phía sau).<br>
+                    • <code>Next to</code> (bên cạnh): <code>S + is/are + next to + the + N</code>.
+                </p>
+            </div>
+
+            <!-- GLOSSARY TABLE EXERCISE 10 -->
+            <div class="glossary-section">
+                <div class="glossary-title">
+                    <i class="fa-solid fa-spell-check"></i> Grammar Glossary (Exercise 10)
+                </div>
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Cấu trúc gốc</th>
+                            <th>Cấu trúc viết lại tương đương</th>
+                            <th>Giải thích ngữ pháp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>S + has + N</code></td><td><code>S's + N</code></td><td>Sở hữu cách (Possessive Case)</td></tr>
+                        <tr><td><code>I don't have + N</code></td><td><code>There isn't + N</code></td><td>Cấu trúc tồn tại (Existence structure)</td></tr>
+                        <tr><td><code>Let's + V_bare</code></td><td><code>How about + V-ing...?</code></td><td>Câu đề nghị (Making suggestions)</td></tr>
+                        <tr><td><code>In front of</code></td><td><code>Behind</code></td><td>Giới từ đối lập (Opposite prepositions)</td></tr>
+                        <tr><td><code>Are there + Ns...?</code></td><td><code>Does + S + have + Ns...?</code></td><td>Câu hỏi tồn tại với động từ Have</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ==================== EXERCISE 10 QUESTIONS CONTENT ==================== -->
+        <div class="pane exercise-pane" id="exercise-pane-2" style="display: none;">
+            <div class="passage-title" style="color: #FF758C;">
+                <i class="fa-solid fa-pen-to-square"></i> Ex10: Questions 1 - 8
+            </div>
+
+            <!-- Ex10 Q1 -->
+            <div class="question-card" id="qcard-5">
+                <div class="question-header">
+                    <span class="question-number">Question 1 (Ex10)</span>
+                    <span class="question-type-badge">Sentence Transformation</span>
+                </div>
+                <div class="question-text">
+                    Nga has a book and it's on the desk.
+                </div>
+                <div class="mcq-options">
+                    <div class="mcq-option" onclick="checkMCQ(5, 'A', 'ex10-rule-1')">
+                        <span class="option-prefix">A</span> Nga's book is on the desk.
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(5, 'B', 'ex10-rule-1')">
+                        <span class="option-prefix">B</span> Her book isn't on the desk.
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(5, 'C', 'ex10-rule-1')">
+                        <span class="option-prefix">C</span> There is a book under the desk
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(5, 'D', 'ex10-rule-1')">
+                        <span class="option-prefix">D</span> There are two books on the desk.
+                    </div>
+                </div>
+                <div class="explanation-card" id="exp-5"></div>
+            </div>
+
+            <!-- Ex10 Q2 -->
+            <div class="question-card" id="qcard-6">
+                <div class="question-header">
+                    <span class="question-number">Question 2 (Ex10)</span>
+                    <span class="question-type-badge">Sentence Transformation</span>
+                </div>
+                <div class="question-text">
+                    I don't have a bookshelf in my bedroom.
+                </div>
+                <div class="mcq-options">
+                    <div class="mcq-option" onclick="checkMCQ(6, 'A', 'ex10-rule-2')">
+                        <span class="option-prefix">A</span> There is a bookshelf in my bedroom.
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(6, 'B', 'ex10-rule-2')">
+                        <span class="option-prefix">B</span> There isn't a bookshelf in my bedroom.
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(6, 'C', 'ex10-rule-2')">
+                        <span class="option-prefix">C</span> I have a bookshelf in my bedroom.
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(6, 'D', 'ex10-rule-2')">
+                        <span class="option-prefix">D</span> There isn't a bookshelf in her bedroom.
+                    </div>
+                </div>
+                <div class="explanation-card" id="exp-6"></div>
+            </div>
+
+            <!-- Ex10 Q3 -->
+            <div class="question-card" id="qcard-7">
+                <div class="question-header">
+                    <span class="question-number">Question 3 (Ex10)</span>
+                    <span class="question-type-badge">Sentence Transformation</span>
+                </div>
+                <div class="question-text">
+                    Let's go to the beach this summer vacation.
+                </div>
+                <div class="mcq-options">
+                    <div class="mcq-option" onclick="checkMCQ(7, 'A', 'ex10-rule-3')">
+                        <span class="option-prefix">A</span> What about to go to the beach this summer vacation?
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(7, 'B', 'ex10-rule-3')">
+                        <span class="option-prefix">B</span> Why don't we going to the beach this summer vacation?
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(7, 'C', 'ex10-rule-3')">
+                        <span class="option-prefix">C</span> How about going to the beach this summer vacation?
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(7, 'D', 'ex10-rule-3')">
+                        <span class="option-prefix">D</span> How about to go to the beach this summer vacation?
+                    </div>
+                </div>
+                <div class="explanation-card" id="exp-7"></div>
+            </div>
+
+            <!-- Ex10 Q4 -->
+            <div class="question-card" id="qcard-8">
+                <div class="question-header">
+                    <span class="question-number">Question 4 (Ex10)</span>
+                    <span class="question-type-badge">Sentence Transformation</span>
+                </div>
+                <div class="question-text">
+                    The TV set is in front of the window.
+                </div>
+                <div class="mcq-options">
+                    <div class="mcq-option" onclick="checkMCQ(8, 'A', 'ex10-rule-4')">
+                        <span class="option-prefix">A</span> The window is next to the balcony.
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(8, 'B', 'ex10-rule-4')">
+                        <span class="option-prefix">B</span> There is a TV set and a window in the house.
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(8, 'C', 'ex10-rule-4')">
+                        <span class="option-prefix">C</span> The window is behind the TV set.
+                    </div>
+                </div>
+                <div class="explanation-card" id="exp-8"></div>
+            </div>
+
+            <!-- Ex10 Q5 -->
+            <div class="question-card" id="qcard-9">
+                <div class="question-header">
+                    <span class="question-number">Question 5 (Ex10)</span>
+                    <span class="question-type-badge">Sentence Transformation</span>
+                </div>
+                <div class="question-text">
+                    My mother has a car.
+                </div>
+                <div class="mcq-options">
+                    <div class="mcq-option" onclick="checkMCQ(9, 'A', 'ex10-rule-1')">
+                        <span class="option-prefix">A</span> This is my mother's car.
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(9, 'B', 'ex10-rule-1')">
+                        <span class="option-prefix">B</span> This is my mother car's.
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(9, 'C', 'ex10-rule-1')">
+                        <span class="option-prefix">C</span> This is my mothers' car.
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(9, 'D', 'ex10-rule-1')">
+                        <span class="option-prefix">D</span> This isn't my mother's car
+                    </div>
+                </div>
+                <div class="explanation-card" id="exp-9"></div>
+            </div>
+
+            <!-- Ex10 Q6 -->
+            <div class="question-card" id="qcard-10">
+                <div class="question-header">
+                    <span class="question-number">Question 6 (Ex10)</span>
+                    <span class="question-type-badge">Sentence Transformation</span>
+                </div>
+                <div class="question-text">
+                    Are there five chairs in Phong's room?
+                </div>
+                <div class="mcq-options">
+                    <div class="mcq-option" onclick="checkMCQ(10, 'A', 'ex10-rule-2')">
+                        <span class="option-prefix">A</span> Does Phong's room has five chairs?
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(10, 'B', 'ex10-rule-2')">
+                        <span class="option-prefix">B</span> Does Phong's room haves five chairs?
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(10, 'C', 'ex10-rule-2')">
+                        <span class="option-prefix">C</span> Does Phong's room have five chairs?
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(10, 'D', 'ex10-rule-2')">
+                        <span class="option-prefix">D</span> Do Phong's room have five chairs?
+                    </div>
+                </div>
+                <div class="explanation-card" id="exp-10"></div>
+            </div>
+
+            <!-- Ex10 Q7 -->
+            <div class="question-card" id="qcard-11">
+                <div class="question-header">
+                    <span class="question-number">Question 7 (Ex10)</span>
+                    <span class="question-type-badge">Sentence Building</span>
+                </div>
+                <div class="question-text">
+                    There/sink/bath/mirror/in/bathroom.
+                </div>
+                <div class="mcq-options">
+                    <div class="mcq-option" onclick="checkMCQ(11, 'A', 'ex10-rule-2')">
+                        <span class="option-prefix">A</span> There is a sink, a bath and a mirror in the bathroom.
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(11, 'B', 'ex10-rule-2')">
+                        <span class="option-prefix">B</span> There has a sink, a bath and a mirror in the bathroom.
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(11, 'C', 'ex10-rule-2')">
+                        <span class="option-prefix">C</span> There are a sink, a bath and a mirror in the bathroom.
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(11, 'D', 'ex10-rule-2')">
+                        <span class="option-prefix">D</span> There have a sink, a bath and a mirror in the bathroom.
+                    </div>
+                </div>
+                <div class="explanation-card" id="exp-11"></div>
+            </div>
+
+            <!-- Ex10 Q8 -->
+            <div class="question-card" id="qcard-12">
+                <div class="question-header">
+                    <span class="question-number">Question 8 (Ex10)</span>
+                    <span class="question-type-badge">Sentence Building</span>
+                </div>
+                <div class="question-text">
+                    The bed/next/desk.
+                </div>
+                <div class="mcq-options">
+                    <div class="mcq-option" onclick="checkMCQ(12, 'A', 'ex10-rule-4')">
+                        <span class="option-prefix">A</span> The bed is next of the desk.
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(12, 'B', 'ex10-rule-4')">
+                        <span class="option-prefix">B</span> The bed is next of desk.
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(12, 'C', 'ex10-rule-4')">
+                        <span class="option-prefix">C</span> The bed is next to desk.
+                    </div>
+                    <div class="mcq-option" onclick="checkMCQ(12, 'D', 'ex10-rule-4')">
+                        <span class="option-prefix">D</span> The bed is next to the desk.
+                    </div>
+                </div>
+                <div class="explanation-card" id="exp-12"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SUBMISSION RESULT MODAL -->
+    <div class="modal-overlay" id="result-modal">
+        <div class="modal-card">
+            <div class="score-circle" id="modal-score">0/12</div>
+            <div class="modal-title" id="modal-title-text">KẾT QUẢ BÀI THI</div>
+            <div class="modal-desc" id="modal-desc-text">Bạn đã hoàn thành bài thi. Hãy kiểm tra các đáp án chi tiết nhé!</div>
+            <button class="btn-close-modal" onclick="closeModal()">ĐÓNG & XEM LẠI</button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT CORE LOGIC -->
+    <script>
+        // DATA MASTER EXPLANATIONS
+        const EXPLANATIONS = {
+            1: {
+                correct: 'C',
+                quote: 'I\'m in the sixth grade.',
+                trans: 'Tôi đang học lớp sáu.',
+                synonyms: 'sixth grade = lớp 6 (chọn C)'
+            },
+            2: {
+                correct: 'D',
+                quote: 'My best friend and I walk to school together.',
+                trans: 'Bạn thân nhất của tôi và tôi cùng đi bộ đến trường.',
+                synonyms: 'my best friend = bạn thân nhất của tôi (chọn D)'
+            },
+            3: {
+                correct: 'A',
+                quote: 'It is quite scary because I don\'t know most of the children.',
+                trans: 'Thật khá đáng sợ vì tôi không biết hầu hết các bạn nhỏ ở đây.',
+                synonyms: 'because I don\'t know most of the children = Khớp 100% với phương án A'
+            },
+            4: {
+                correct: 'D',
+                quote: 'My favourite subjects are Art and English.',
+                trans: 'Các môn học yêu thích của tôi là Mỹ thuật và Tiếng Anh.',
+                synonyms: 'Art and English = Mỹ thuật và Tiếng Anh (chọn D)'
+            },
+            5: {
+                correct: 'A',
+                quote: 'Nga has a book and it\'s on the desk.',
+                trans: 'Nga có một cuốn sách và nó ở trên bàn.',
+                synonyms: 'Nga has a book ➔ Nga\'s book (Sở hữu cách: Cuốn sách của Nga). Phương án A đúng cấu trúc.'
+            },
+            6: {
+                correct: 'B',
+                quote: 'I don\'t have a bookshelf in my bedroom.',
+                trans: 'Tôi không có giá sách trong phòng ngủ.',
+                synonyms: 'I don\'t have a bookshelf ➔ There isn\'t a bookshelf (Cấu trúc phủ định tồn tại). Chọn B.'
+            },
+            7: {
+                correct: 'C',
+                quote: 'Let\'s go to the beach this summer vacation.',
+                trans: 'Hãy đi biển vào kỳ nghỉ hè này nhé.',
+                synonyms: 'Let\'s + V_bare = How about + V-ing...? (How about going...). Chọn C.'
+            },
+            8: {
+                correct: 'C',
+                quote: 'The TV set is in front of the window.',
+                trans: 'Tivi ở phía trước cửa sổ.',
+                synonyms: 'in front of (phía trước) ↔ behind (phía sau) ➔ Cửa sổ ở phía sau Tivi. Chọn C.'
+            },
+            9: {
+                correct: 'A',
+                quote: 'My mother has a car.',
+                trans: 'Mẹ tôi có một chiếc ô tô.',
+                synonyms: 'My mother has a car ➔ This is my mother\'s car (Chiếc xe ô tô của mẹ tôi). Chọn A.'
+            },
+            10: {
+                correct: 'C',
+                quote: 'Are there five chairs in Phong\'s room?',
+                trans: 'Có 5 chiếc ghế trong phòng của Phong phải không?',
+                synonyms: 'Are there...? ➔ Does + S(số ít) + have...? Với Phong\'s room dùng "Does... have". Chọn C.'
+            },
+            11: {
+                correct: 'A',
+                quote: 'There/sink/bath/mirror/in/bathroom.',
+                trans: 'Có một bồn rửa mặt, một bồn tắm và một chiếc gương trong phòng tắm.',
+                synonyms: 'There is + a + danh từ số ít đứng ngay sau (a sink). Không dùng "There has/have". Chọn A.'
+            },
+            12: {
+                correct: 'D',
+                quote: 'The bed/next/desk.',
+                trans: 'Chiếc giường nằm ở bên cạnh cái bàn học.',
+                synonyms: 'Giới từ "bên cạnh" là "next to". Cần mạo từ "the" trước desk ➔ The bed is next to the desk. Chọn D.'
+            }
+        };
+
+        let userScores = {};
+        const totalQuestions = 12;
+        let timerSeconds = 25 * 60;
+        let timerInterval = null;
+        let isTimerRunning = false;
+
+        // WEB AUDIO SOUND EFFECTS API
+        function playSound(type) {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const now = ctx.currentTime;
+                if (type === 'correct') {
+                    [523.25, 659.25, 783.99].forEach((freq, i) => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(freq, now + i * 0.08);
+                        gain.gain.setValueAtTime(0.12, now + i * 0.08);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.2);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(now + i * 0.08);
+                        osc.stop(now + i * 0.08 + 0.2);
+                    });
+                } else {
+                    [320, 260, 200].forEach((freq, i) => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'sawtooth';
+                        osc.frequency.setValueAtTime(freq, now + i * 0.1);
+                        gain.gain.setValueAtTime(0.1, now + i * 0.1);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.1 + 0.25);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(now + i * 0.1);
+                        osc.stop(now + i * 0.1 + 0.25);
+                    });
+                }
+            } catch (e) {}
+        }
+
+        // TIMER LOGIC
+        function toggleTimer() {
+            const btn = document.getElementById('btn-timer-toggle');
+            if (!isTimerRunning) {
+                isTimerRunning = true;
+                btn.innerText = 'TẠM DỪNG TÍNH GIỜ';
+                btn.style.background = '#FF758C';
+                btn.style.color = 'white';
+                timerInterval = setInterval(() => {
+                    if (timerSeconds > 0) {
+                        timerSeconds--;
+                        updateTimerDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        alert("⏰ Đã hết giờ làm bài! Bạn vẫn có thể tiếp tục làm, nhưng nhớ trong phòng thi thật, bạn chỉ nên làm bài này trong 20-25 phút thôi nhé.");
+                    }
+                }, 1000);
+            } else {
+                isTimerRunning = false;
+                clearInterval(timerInterval);
+                btn.innerText = 'TIẾP TỤC TÍNH GIỜ';
+                btn.style.background = '#FDCB6E';
+                btn.style.color = '#2D3436';
+            }
+        }
+
+        function updateTimerDisplay() {
+            const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+            const s = (timerSeconds % 60).toString().padStart(2, '0');
+            document.getElementById('timer-display').innerText = `${m}:${s}`;
+        }
+
+        // TAB SWITCHING
+        function switchTab(tabIndex) {
+            for (let i = 1; i <= 2; i++) {
+                document.getElementById(`passage-pane-${i}`).style.display = i === tabIndex ? 'block' : 'none';
+                document.getElementById(`exercise-pane-${i}`).style.display = i === tabIndex ? 'block' : 'none';
+                document.getElementById(`tab-btn-${i}`).classList.toggle('active', i === tabIndex);
+            }
+        }
+
+        // TRANSLATION TOGGLE
+        function toggleTranslation(id) {
+            const box = document.getElementById(id);
+            box.style.display = box.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // TEXT HIGHLIGHTER ON MOUSE SELECTION
+        document.addEventListener('mouseup', function () {
+            const selection = window.getSelection();
+            if (!selection.isCollapsed && selection.rangeCount > 0) {
+                const range = selection.getRangeAt(0);
+                const container = range.commonAncestorContainer;
+                const isPassage = container.nodeType === 3 
+                    ? container.parentNode.closest('.passage-pane')
+                    : container.closest('.passage-pane');
+
+                if (isPassage) {
+                    const mark = document.createElement('mark');
+                    mark.className = 'pastel-highlight';
+                    try {
+                        range.surroundContents(mark);
+                        selection.removeAllRanges();
+                    } catch (e) {}
+                }
+            }
+        });
+
+        // LOCATE EVIDENCE IN PASSAGE / RULE
+        function locateEvidence(paragraphId) {
+            const element = document.getElementById(paragraphId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                element.classList.add('evidence-pulse');
+                setTimeout(() => {
+                    element.classList.remove('evidence-pulse');
+                }, 3000);
+            }
+        }
+
+        // UPDATE PROGRESS BAR
+        function updateProgress() {
+            const answeredCount = Object.keys(userScores).length;
+            const percent = Math.round((answeredCount / totalQuestions) * 100);
+            document.getElementById('progress-bar-inner').style.width = percent + '%';
+            document.getElementById('progress-text').innerText = `${answeredCount}/${totalQuestions} (${percent}%)`;
+        }
+
+        // SHOW DETAILED EXPLANATION BOX
+        function renderExplanation(qNum, isCorrect, paragraphId) {
+            const expData = EXPLANATIONS[qNum];
+            const expCard = document.getElementById(`exp-${qNum}`);
+            expCard.style.display = 'block';
+            expCard.innerHTML = `
+                <div class="explanation-title">
+                    <i class="fa-solid fa-circle-info"></i> PHẦN GIẢI THÍCH CHI TIẾT
+                </div>
+                <div class="exp-item"><span class="exp-label">1. ĐÁP ÁN DÚNG:</span> <strong>${expData.correct}</strong></div>
+                <div class="exp-item"><span class="exp-label">2. CÂU GỐC / DẪN CHỨNG:</span> <em>"${expData.quote}"</em></div>
+                <div class="exp-item"><span class="exp-label">3. DỊCH NGHĨA:</span> ${expData.trans}</div>
+                <div class="exp-item"><span class="exp-label">4. PHÂN TÍCH NGỮ PHÁP & TỪ VỰNG:</span> ${expData.synonyms}</div>
+                <button class="btn-locate" onclick="locateEvidence('${paragraphId}')">
+                    <i class="fa-solid fa-location-crosshairs"></i> 📍 Vị trí dẫn chứng / Quy tắc ngữ pháp
+                </button>
+            `;
+        }
+
+        // CHECK MCQ (SINGLE ATTEMPT)
+        function checkMCQ(qNum, selectedOption, paragraphId) {
+            const card = document.getElementById(`qcard-${qNum}`);
+            // If already answered, do nothing
+            if (userScores[qNum] !== undefined) return;
+
+            const expData = EXPLANATIONS[qNum];
+            const isCorrect = selectedOption === expData.correct;
+            const options = card.querySelectorAll('.mcq-option');
+
+            options.forEach((opt, idx) => {
+                const optLetter = String.fromCharCode(65 + idx);
+                opt.classList.add('disabled');
+                opt.style.pointerEvents = 'none'; // Lock further clicks
+                if (optLetter === expData.correct) {
+                    opt.classList.add('correct');
+                } else if (optLetter === selectedOption && !isCorrect) {
+                    opt.classList.add('wrong');
+                }
+            });
+
+            playSound(isCorrect ? 'correct' : 'wrong');
+            userScores[qNum] = isCorrect;
+            updateProgress();
+            renderExplanation(qNum, isCorrect, paragraphId);
+        }
+
+        // SUBMIT & CONFETTI
+        function submitTest() {
+            let correctCount = 0;
+            for (let q in userScores) {
+                if (userScores[q] === true) correctCount++;
+            }
+
+            document.getElementById('modal-score').innerText = `${correctCount}/${totalQuestions}`;
+            let title = "CỐ LÊN NHÉ! 💪";
+            let desc = "Hãy kiểm tra lại kỹ các phần giải thích chi tiết để rút kinh nghiệm cho các bài test tiếp theo nhé!";
+
+            if (correctCount === totalQuestions) {
+                title = "🏆 THIÊN TÀI TIẾNG ANH 12/12!";
+                desc = "Xuất sắc tuyệt đối! Bạn đã trả lời đúng 100% tất cả các câu hỏi!";
+                triggerConfetti();
+            } else if (correctCount >= 8) {
+                title = "🌟 LÀM TỐT LẮM!";
+                desc = "Kết quả rất ấn tượng! Luyện tập thêm một chút nữa là đạt điểm tối đa rồi.";
+                triggerConfetti();
+            }
+
+            document.getElementById('modal-title-text').innerText = title;
+            document.getElementById('modal-desc-text').innerText = desc;
+            document.getElementById('result-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('result-modal').style.display = 'none';
+        }
+
+        // CONFETTI EFFECT
+        function triggerConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+            const colors = ['#FF758C', '#8854C0', '#FDCB6E', '#00C9A7', '#00D26A'];
+
+            for (let i = 0; i < 120; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    size: Math.random() * 8 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    speedY: Math.random() * 3 + 2,
+                    speedX: Math.random() * 2 - 1
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.y += p.speedY;
+                    p.x += p.speedX;
+                    ctx.fillStyle = p.color;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                if (particles.some(p => p.y < canvas.height)) {
+                    requestAnimationFrame(animate);
+                } else {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }
+            }
+            animate();
+        }
+    </script>
+</body>
+</html>
